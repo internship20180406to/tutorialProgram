@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>キャンバス</title>
+    <title>チュートリアル</title>
 </head>
 <body>
-
+<div>
+    <h1>自己紹介出力</h1>
+    <p><span th:text="*{school}"></span>から来ました、<span th:text="*{name}"></span>です！</p>
+    <p>出身地は、<span th:text="*{birthplace}"></span>です。</p>
+    <p>よろしくお願いします！</p>
+</div>
 </body>
 </html>

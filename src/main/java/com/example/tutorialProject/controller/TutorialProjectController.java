@@ -14,42 +14,33 @@ import java.util.ArrayList;
 
 @Controller
 public class TutorialProjectController {
-
     @Autowired
-    private User1Service user1Service;
-    @Autowired
-    private User2Service user2Service;
-    @Autowired
-    private User3Service user3Service;
-    @Autowired
-    private User4Service user4Service;
-    @Autowired
-    private User5Service user5Service;
-    @Autowired
-    private User6Service user6Service;
-
+    private TutorialService tutorialService;
     @GetMapping("/tutorial")
     public String getTutorial(Model model) {
         List<String> users = new ArrayList<>();
-        users.add("選択してください");
-        user1Service.user1(users);
-        user2Service.user2(users);
-        user3Service.user3(users);
-        user4Service.user4(users);
-        user5Service.user5(users);
-        user6Service.user6(users);
+
+        tutorialService.storeSelectUsers(users);
+
         model.addAttribute("place", "福岡県福岡市中央区");
         model.addAttribute("Date", LocalDateTime.now());
         model.addAttribute("users", users);
+
         return "tutorialMina";
     }
 
     @PostMapping("/tutorial")
-    public String postTutorial(@RequestParam("place") String place,
-                               @RequestParam("Name") String name,
+    public String postTutorial(@RequestParam("Name") String name,
                                Model model) {
-        System.out.println(name);
-        model.addAttribute("birthplace", place);
+        System.out.println("選択された名前: " + name);
+        List<String> selfIntroduction = new ArrayList<>();
+
+        tutorialService.checkUsers(name,selfIntroduction);
+
+        model.addAttribute("name", selfIntroduction.getFirst());
+        model.addAttribute("birthplace", selfIntroduction.get(1));
+        model.addAttribute("school", selfIntroduction.getLast());
+
         return "tutorialCss";
     }
 }

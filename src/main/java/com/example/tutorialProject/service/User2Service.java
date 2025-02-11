@@ -8,9 +8,20 @@ import java.util.Objects;
 @Service
 public class User2Service {
     String name = "";
-    public void user2(List<String> Users){
-        if(!Objects.equals(name, "")){
+    String birthplace = "";
+    String school = "";
+
+    public void user2(List<String> Users) {
+        if (!Objects.equals(name, "")) {
             Users.add(name);
+        }
+    }
+
+    public void checkUser2(String selectName, List<String> selfIntroduction) {
+        if (Objects.equals(name, selectName)) {
+            selfIntroduction.add(name);
+            selfIntroduction.add(birthplace);
+            selfIntroduction.add(school);
         }
     }
 }
