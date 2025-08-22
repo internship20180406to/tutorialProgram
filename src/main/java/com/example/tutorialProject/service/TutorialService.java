@@ -20,6 +20,10 @@ public class TutorialService {
     private User5Service user5Service;
     @Autowired
     private User6Service user6Service;
+    @Autowired
+    private User7Service user7Service;
+    @Autowired
+    private User8Service user8Service;
 
     public void storeSelectUsers(List<String> users) {
         users.add("選択してください");
@@ -29,6 +33,8 @@ public class TutorialService {
         user4Service.user4(users);
         user5Service.user5(users);
         user6Service.user6(users);
+        user7Service.user7(users);
+        user8Service.user8(users);
     }
 
     public void checkUsers(String selectName, List<String> selfIntroduction) {
@@ -38,5 +44,7 @@ public class TutorialService {
         user4Service.checkUser4(selectName, selfIntroduction);
         user5Service.checkUser5(selectName, selfIntroduction);
         user6Service.checkUser6(selectName, selfIntroduction);
+        user7Service.checkUser7(selectName, selfIntroduction);
+        user8Service.checkUser8(selectName, selfIntroduction);
     }
 }
