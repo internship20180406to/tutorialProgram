@@ -1,9 +1,12 @@
 package com.example.tutorialProject.controller;
 
 import com.example.tutorialProject.service.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +33,8 @@ public class TutorialProjectController {
     }
 
     @PostMapping("/tutorial")
-    public String postTutorial(@RequestParam("Name") String name,
+    @Validated
+    public String postTutorial(@RequestParam("Name") @NotBlank String name,
                                Model model) {
         System.out.println("選択された名前: " + name);
         List<String> selfIntroduction = new ArrayList<>();
