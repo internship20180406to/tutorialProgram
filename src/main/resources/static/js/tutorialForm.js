@@ -16,7 +16,7 @@
                 }
     }
 
-// セレクトボックスの変更後の値が「選択してください」意外だとhandlePlaceChange関数から呼ばれる
+// セレクトボックスの変更後の値が「選択してください」以外だとhandlePlaceChange関数から呼ばれる
         function changeAction(selectedName) {
             const form = document.getElementById('tutorialForm');
             form.addEventListener('submit', function(event) {
