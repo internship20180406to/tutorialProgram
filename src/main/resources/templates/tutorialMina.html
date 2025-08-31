@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>チュートリアル</title>
+</head>
+<body>
+<div>
+    <h1>自己紹介入力</h1>
+    <p><span th:text="*{place}"></span>の今の日時は<b><span th:text="*{Date}"></span></b>です！</p>
+    <form id="tutorialForm" action="#" th:action="@{/tutorial}" method="post">
+        <label for="place">選択肢：</label>
+        <select name="place" id="place" onchange="handlePlaceChange()">
+            <option th:each="place : ${users}" th:value="${place}" th:text="${place}"></option>
+        </select>
+        <input type="submit" value="確認" id="submitButton" disabled/>
+    </form>
+</div>
+</body>
+<script th:inline="javascript" src="/js/tutorialForm.js"></script>
+</html>
